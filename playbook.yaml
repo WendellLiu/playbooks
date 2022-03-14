@@ -60,8 +60,3 @@
         state: enabled
         default: deny
 
-    - name: UFW - Allow mysql remote connections
-      community.general.ufw:
-        rule: allow
-        port: '3306'
-        proto: tcp
