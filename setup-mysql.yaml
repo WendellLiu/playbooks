@@ -64,10 +64,3 @@
           - mysql_data:/var/lib/mysql 
         env:
           MYSQL_ROOT_PASSWORD: root
-
-    - name: UFW - Allow mysql remote connections
-      community.general.ufw:
-        rule: allow
-        port: '3306'
-        proto: tcp
-        route: true
