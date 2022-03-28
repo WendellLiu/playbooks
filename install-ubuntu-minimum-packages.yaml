@@ -1,0 +1,24 @@
+---
+- name: install ubuntu minimum packages
+  hosts: "{{ variable_host | default('all') }}"
+  become: true
+  vars:
+    created_username: "{{created_username}}" 
+    public_key_file_name: "{{public_key_file_name}}" 
+
+  tasks:
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: Update apt and install required system packages
+      apt:
+        pkg:
+          - curl
+          - vim
+          - git
+        state: latest
+        update_cache: true
+

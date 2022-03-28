@@ -1,6 +1,6 @@
 ---
 - name: setup mysql
-  hosts: all
+  hosts: "{{ variable_host | default('all') }}"
   become: true
   vars:
     container_count: 1 

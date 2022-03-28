@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: create a new ssh-access user
+  hosts: "{{ variable_host | default('all') }}"
   become: true
   vars:
     created_username: "{{created_username}}" 
@@ -44,9 +45,6 @@
     - name: Update apt and install required system packages
       apt:
         pkg:
-          - curl
-          - vim
-          - git
           - ufw
         state: latest
         update_cache: true
