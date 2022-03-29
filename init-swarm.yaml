@@ -2,7 +2,19 @@
 - name: init Docker Swarm 
   hosts: "{{ variable_host }}"
   become: true
+  vars:
+    advertise_addr: "{{advertise_addr}}" 
 
   tasks:
-    - name: Install required system packages
-      include_tasks: tasks/init-setup.yaml
+    - name: 'Check mandatory variables are defined'
+      assert:
+        that:
+          - advertise_addr is defined
+
+    - name: init docker setup 
+      import_tasks: tasks/init-docker-setup.yaml
+
+    - name: Init a new swarm with default parameters
+      docker_swarm:
+        state: present
+        advertise_addr: "{{ advertise_addr }}" 

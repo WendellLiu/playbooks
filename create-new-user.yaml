@@ -1,6 +1,6 @@
 ---
 - name: create a new ssh-access user
-  hosts: "{{ variable_host | default('all') }}"
+  hosts: "{{ variable_host }}"
   become: true
   vars:
     created_username: "{{created_username}}" 
