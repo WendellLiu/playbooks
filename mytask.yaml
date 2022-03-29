@@ -1,6 +1,6 @@
 ---
 - name: My playbook
-  hosts: "{{ variable_host | default('all') }}"
+  hosts: "{{ variable_host }}"
   tasks:
     - name: run one
       import_tasks: tasks/one.yaml
