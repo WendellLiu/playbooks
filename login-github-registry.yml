@@ -1,10 +1,10 @@
 ---
 - name: docker login 
-  hosts: "{{ variable_host }}"
+  hosts: "{{ host }}"
   become: true
   vars:
     username: "{{username}}"
-    password: "{{password}}" 
+    password: "{{github_registry_token}}" 
     registry: ghcr.io
 
   tasks:

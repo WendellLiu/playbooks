@@ -1,6 +1,6 @@
 ---
 - name: init Docker Swarm 
-  hosts: "{{ variable_host }}"
+  hosts: "{{ host }}"
   become: true
   vars:
     advertise_addr: "{{advertise_addr}}" 

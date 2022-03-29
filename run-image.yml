@@ -1,11 +1,11 @@
 ---
-- name: setup mysql
+- name: run image 
   hosts: "{{ host }}"
   become: true
   vars:
     container_count: 1 
-    default_container_name: mysql-8 
-    default_container_image: mysql:8.0
+    default_container_name: field-seating-api 
+    default_container_image: "ghcr.io/field-seating/field-seating-api:{{ tag }}" 
   tasks:
     - name: init docker setup 
       import_tasks: tasks/init-docker-setup.yaml
@@ -21,10 +21,8 @@
         image: "{{ default_container_image }}"
         recreate: yes
         exposed_ports:
-          - 3306 
+          - 3000 
         ports:
-          - "3306:3306" 
-        volumes:
-          - mysql_data:/var/lib/mysql 
-        env:
-          MYSQL_ROOT_PASSWORD: root
+          - "3000:3000" 
+    - name: docker prune 
+      import_tasks: tasks/docker-prune.yml

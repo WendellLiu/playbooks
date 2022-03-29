@@ -1,6 +1,6 @@
 ---
 - name: install ubuntu minimum packages
-  hosts: "{{ variable_host }}"
+  hosts: "{{ host }}"
   become: true
   vars:
     created_username: "{{created_username}}" 
