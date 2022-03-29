@@ -1,0 +1,2 @@
+- name: Leaving a mark
+  command: "touch /tmp/ansible_was_not_here"
